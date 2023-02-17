@@ -6,12 +6,16 @@ function App() {
   const [count, setCount] = useState(0);
 
   //function for opening the file manager
-  const openFileManager = async () => {
-    // Have the user select a file.
-    const [handle] = await window.showOpenFilePicker();
-    // Get the File object from the handle.
-    const file = await handle.getFile();
-  };
+  let openFileManager;
+
+  useEffect(() => {
+    openFileManager = async () => {
+      // Have the user select a file.
+      const [handle] = await window.showOpenFilePicker();
+      // Get the File object from the handle.
+      const file = await handle.getFile();
+    };
+  }, []);
 
   return (
     <div className="App">
