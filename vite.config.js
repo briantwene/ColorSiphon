@@ -5,9 +5,12 @@ import { VitePWA } from "vite-plugin-pwa"
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    https: true
+    https: false
   },
   plugins: [react(), VitePWA({
+    devOptions: {
+      enabled: true
+    },
     manifest: {
       name: 'ColorSiphon',
       short_name: 'Siphon',
