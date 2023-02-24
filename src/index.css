@@ -9,5 +9,5 @@ body {
   @apply h-full;
 }
 #root {
-  @apply min-h-full;
+  @apply h-full;
 }

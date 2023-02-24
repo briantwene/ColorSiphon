@@ -5,7 +5,7 @@ import Nav from "../Components/Nav";
 
 function root() {
   return (
-    <div className="container mx-auto h-full">
+    <div className="mx-auto h-full">
       <Nav />
       <Outlet />
       <Footer />
