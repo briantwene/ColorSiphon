@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     https: false
   },
-  base: './'
+  base: './',
   plugins: [react(), VitePWA({
     devOptions: {
       enabled: true
