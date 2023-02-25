@@ -17,7 +17,7 @@ export default function ColoredDivCopy({ color }) {
       <span
         className={`uppercase font-bold text-lg p-3 text-${getContrastYIQ(
           color
-        )}`}
+        )} `}
       >
         {color}
       </span>

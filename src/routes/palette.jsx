@@ -27,7 +27,7 @@ export default function Palette() {
           Share
         </button>
       </div>
-      <div className="w-full border flex flex-wrap rounded-xl overflow-hidden my-12">
+      <div className="w-full border flex flex-wrap my-12">
         {palette.map((color) => (
           <ColoredDivCopy color={color} />
         ))}
