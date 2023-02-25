@@ -7,7 +7,7 @@ import ErrorPage from "./error-page";
 import Extract from "./routes/extract";
 import History from "./routes/history";
 import Index from "./routes";
-
+import Palette, { loader as paletteLoader } from "./routes/palette";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,8 +24,9 @@ const router = createBrowserRouter([
         element: <History />
       },
       {
-        path: "/palette",
-        element: <palette />
+        path: "/palette/:paletteId",
+        element: <Palette />,
+        loader: paletteLoader
       }
     ]
   }

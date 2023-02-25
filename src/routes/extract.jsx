@@ -3,6 +3,7 @@ import { extractColorsFromSrc } from "extract-colors";
 import ExtractResults from "../Components/ExtractResults";
 import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
 import { db } from "../db";
+import { activateShare } from "../utils";
 
 function Extract() {
   const [image, setImage] = useState(null);
@@ -18,26 +19,6 @@ function Extract() {
       setPalette([]);
     } else {
       setImage(null);
-    }
-  };
-
-  const activateShare = async (e) => {
-    console.log(e, colors);
-    const url = `https://mobile-dev-pwa-demo.vercel.app/palette/${palette
-      .map((color) => color.replace("#", ""))
-      .join("-")}`;
-    const shareData = {
-      title: "Color Palette",
-      text: "What's good? checkout this palette!",
-      url: url
-    };
-
-    console.log("shareData", shareData);
-
-    try {
-      await window.navigator.share(shareData);
-    } catch (err) {
-      console.log(`Error: ${err}`);
     }
   };
 
@@ -105,7 +86,11 @@ function Extract() {
       {/* would then have the results panel here */}
 
       {image && (
-        <ExtractResults image={image} colors={colors} share={activateShare} />
+        <ExtractResults
+          image={image}
+          colors={colors}
+          share={() => activateShare(colors)}
+        />
       )}
     </div>
   );
