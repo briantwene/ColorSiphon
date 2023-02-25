@@ -12,9 +12,6 @@ export default defineConfig({
   plugins: [svgr(), react(), VitePWA({
 
     registerType: 'autoUpdate',
-    workbox: {
-      globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-    },
     devOptions: {
       enabled: true
     },
