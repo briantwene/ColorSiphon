@@ -23,7 +23,7 @@ export const generatePaletteLink = (palette, internal = false) => {
         .map((color) => color.replace("#", ""))
         .join("-")
 
-    return internal ? "/palette" + url : baseUrl + url
+    return internal ? "/palette/" + url : baseUrl + url
 }
 
 
