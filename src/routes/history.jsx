@@ -6,7 +6,6 @@ import { db } from "../db";
 ("w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden m-10");
 function History() {
   const history = useLiveQuery(() => db.colorHistory.toArray());
-  console.log("history data", history);
 
   const mappedHistory = history?.map((item) => (
     <PaletteContainer palette={item} />

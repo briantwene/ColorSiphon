@@ -3,7 +3,6 @@ import { getContrastYIQ } from "../utils";
 
 export default function ColoredDivCopy({ color }) {
   const copyTextToClipboard = async (e) => {
-    console.log(e);
     await navigator.clipboard.writeText(e.target.children[0].innerText);
     alert("Text copied");
   };

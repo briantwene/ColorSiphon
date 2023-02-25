@@ -3,7 +3,6 @@ import { activateShare, generatePaletteLink } from "../utils";
 import ColoredDiv from "./ColoredDiv";
 
 function PaletteContainer({ palette }) {
-  console.log(palette);
   const link = generatePaletteLink(palette.colors, true);
   return (
     <div className="h-36 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col p-3">

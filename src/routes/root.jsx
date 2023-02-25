@@ -13,7 +13,6 @@ function root() {
     // Update UI notify the user they can install the PWA
 
     // Optionally, send analytics event that PWA install promo was shown.
-    console.log(`'beforeinstallprompt' event was fired.`);
   };
 
   const onClickDownload = async () => {

@@ -1,13 +1,7 @@
 import React from "react";
 
 function ExtractResults({ image, colors, share }) {
-  console.log(colors);
   return (
-    // <div className="card">
-    //   <div>{image}</div>
-    //   <div>{colors}</div>
-    // </div>
-
     <div className="flex flex-col mb-20 w-full sm:w-96  bg-base-100 border rounded-xl border-slate-200">
       <figure className="bg-slate-100 px-5 py-5 rounded-t-xl ">
         <img src={image} alt="Shoes" className="object-cover" />

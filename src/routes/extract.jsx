@@ -12,7 +12,6 @@ function Extract() {
   const [palette, setPalette] = useState([]);
   //can add a thing where only one image can be selected will do this
   const onSelectImage = (e) => {
-    console.log(e);
     if (e.target.files.length) {
       setImage(URL.createObjectURL(e.target.files[0]));
       setColors([]);
@@ -49,7 +48,6 @@ function Extract() {
     const id = await db.colorHistory
       .add({ colors: justTheColors })
       .catch(console.error);
-    console.log("doen", id);
   };
 
   // useEffect(() => {
