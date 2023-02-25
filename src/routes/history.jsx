@@ -13,7 +13,7 @@ function History() {
   ));
 
   return (
-    <div className="flex-grow flex flex-col items-center mx-auto">
+    <div className="flex-grow flex flex-col items-center">
       <div className="h-1/3 w-full mx-auto my-14 flex flex-col justify-center items-center text-center prose">
         <h1 className="text-black">History</h1>
         <div>All previous discoveries live here</div>
