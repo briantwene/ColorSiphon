@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { ReactComponent as Logo } from "../assets/logo-black.svg";
 
 function Nav() {
   let deferredPrompt;
@@ -35,7 +36,7 @@ function Nav() {
   }, []);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar  bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -69,7 +70,9 @@ function Nav() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <div className="btn btn-ghost normal-case text-xl font-semibold font-poppins">
+          ColorSiphon
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

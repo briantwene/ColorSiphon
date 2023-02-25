@@ -1,33 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { extractColorsFromSrc } from "extract-colors";
+import ExtractResults from "../Components/ExtractResults";
+import { startWindToast } from "@mariojgt/wind-notify/packages/index.js";
+import { db } from "../db";
 
 function Extract() {
   const [image, setImage] = useState(null);
   const [colors, setColors] = useState([]);
+  const [navigator, setNavigator] = useState();
+  const [palette, setPalette] = useState([]);
   //can add a thing where only one image can be selected will do this
   const onSelectImage = (e) => {
     console.log(e);
     if (e.target.files.length) {
       setImage(URL.createObjectURL(e.target.files[0]));
+      setColors([]);
+      setPalette([]);
     } else {
       setImage(null);
     }
   };
 
+  const activateShare = async (e) => {
+    console.log(e, colors);
+    const url = `https://mobile-dev-pwa-demo.vercel.app/palette/${palette
+      .map((color) => color.replace("#", ""))
+      .join("-")}`;
+    const shareData = {
+      title: "Color Palette",
+      text: "What's good? checkout this palette!",
+      url: url
+    };
+
+    console.log("shareData", shareData);
+
+    try {
+      await window.navigator.share(shareData);
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  };
+
   const extractDaColors = async () => {
+    //get the colors
     const colors = await extractColorsFromSrc(image).catch(console.error);
+    const justTheColors = colors.map((color) => color.hex);
+    setPalette(justTheColors);
     setColors(
-      colors.map((color, key) => (
-        <div
-          key={"result " + key}
-          style={{ backgroundColor: color.hex }}
-          className={`badge m-1 badge-md`}
-        ></div>
+      justTheColors.map((color, key) => (
+        <div className="tooltip" data-tip={color}>
+          <div
+            key={"result " + key}
+            style={{
+              backgroundColor: color,
+              color: color,
+              padding: 4
+            }}
+          >
+            <span className="text-sm">{color}</span>
+          </div>
+        </div>
       ))
     );
+
+    //add to db
+
+    const id = await db.colorHistory
+      .add({ colors: justTheColors })
+      .catch(console.error);
+    console.log("doen", id);
   };
+
+  // useEffect(() => {
+  //   setNavigator(window.navigator);
+  // }, []);
+
   return (
-    <div className="container flex flex-col items-center mx-auto h-full px-5">
+    <div className="container flex-grow flex flex-col items-center mx-auto  px-5">
       <div className="h-1/3 w-full mx-auto my-14 flex flex-col justify-center items-center text-center prose">
         <h1>Extract</h1>
         <div>Create palettes from your photos</div>
@@ -56,15 +105,7 @@ function Extract() {
       {/* would then have the results panel here */}
 
       {image && (
-        <div className="card lg:card-side bg-base-100 mb-20 shadow-xl">
-          <figure>
-            <img src={image} alt="Album" />
-          </figure>
-          <div className="card-body">
-            <h4 className="prose">Colours</h4>
-            <div className="flex flex-wrap">{colors}</div>
-          </div>
-        </div>
+        <ExtractResults image={image} colors={colors} share={activateShare} />
       )}
     </div>
   );
