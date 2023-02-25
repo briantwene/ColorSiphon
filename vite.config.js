@@ -8,8 +8,8 @@ export default defineConfig({
   server: {
     https: false
   },
-  base: './',
-  plugins: [svgr(), react(), VitePWA({
+  base: '/',
+  plugins: [react(), VitePWA({
 
     registerType: 'autoUpdate',
     devOptions: {
