@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { ReactComponent as Logo } from "../assets/logo-black.svg";
 
 function Nav({ download }) {
   const location = useLocation();
