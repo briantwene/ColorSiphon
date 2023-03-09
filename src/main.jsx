@@ -8,6 +8,7 @@ import Extract from "./routes/extract";
 import History from "./routes/history";
 import Index from "./routes";
 import Palette, { loader as paletteLoader } from "./routes/palette";
+import Sensors from "./routes/sensors";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/palette/:paletteId",
         element: <Palette />,
         loader: paletteLoader
+      },
+      {
+        path: "/sensors",
+        element: <Sensors />
       }
     ]
   }

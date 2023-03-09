@@ -37,6 +37,9 @@ function Nav({ download }) {
             <li>
               <a href="/history">History</a>
             </li>
+            <li>
+              <a href="/sensors">Sensors</a>
+            </li>
           </ul>
         </div>
         <div className="btn btn-ghost normal-case text-xl font-semibold font-poppins">
@@ -53,6 +56,9 @@ function Nav({ download }) {
           </li>
           <li>
             <a href="/history">History</a>
+          </li>
+          <li>
+            <a href="/sensors">Sensors</a>
           </li>
         </ul>
       </div>
